@@ -21,30 +21,55 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-let g:which_key_map['/'] = 'comment toggle'
-let g:which_key_map[';'] = [ ':Dashboard'                                      , 'home screen' ]
-let g:which_key_map['?'] = [ ':NvimTreeFindFile'                               , 'find current file' ]
-let g:which_key_map['e'] = [ ':NvimTreeToggle'                                 , 'explorer' ]
-let g:which_key_map['f'] = [ ':Telescope find_files'                           , 'find files' ]
-let g:which_key_map['h'] = [ '<C-W>s'                                          , 'split below']
-let g:which_key_map['H'] = [ ':let @/ = ""'                                    , 'no highlight' ]
-let g:which_key_map['r'] = [ ':RnvimrToggle'                                   , 'ranger' ]
+let g:which_key_map[','] = 'comment toggle'
+let g:which_key_map['.'] = [ ':Dashboard'                                      , 'home screen' ]
+" let g:which_key_map['?'] = [ ':NvimTreeFindFile'                               , 'find current file' ]
+" let g:which_key_map['e'] = [ ':NvimTreeToggle'                                 , 'explorer' ]
+" let g:which_key_map['h'] = [ '<C-W>s'                                          , 'split below']
+" let g:which_key_map['H'] = [ ':let @/ = ""'                                    , 'no highlight' ]
 " TODO create entire treesitter section
-let g:which_key_map['v'] = [ '<C-W>v'                                          , 'split right']
+" let g:which_key_map['v'] = [ '<C-W>v'                                          , 'split right']
 " TODO play nice with status line
 
 " Group mappings
 
+" q is for quit
+let g:which_key_map.q = {
+      \ 'name' : '+quit',
+      \ 'q' : [':q'   	, 'quit'],
+      \ 'Q' : [':q!'  	, 'force quit'],
+      \ 'a' : [':qa'	, 'quit all'],
+      \ 'A' : [':qa!'	, 'force quit all'],
+      \ }
+
+" w is for windows
+let g:which_key_map.w = {
+      \ 'name' : '+windows',
+      \ 'd' : [':close'	, 'close window'],
+      \ 'v' : [':vs'  	, 'split vertically'],
+      \ 'h' : [':hs'	, 'split horizontally'],
+      \ }
+
+" f is for files
+let g:which_key_map.f = {
+      \ 'name' : '+files',
+      \ 'f' : [':Telescope find_files'    , 'find files'],
+      \ 'r' : [':RnvimrToggle'            , 'ranger'],
+      \ 't' : [':NvimTreeToggle'          , 'tree'],
+      \ 'l' : [':NvimTreeFindFile'        , 'find file in tree'],
+      \ 's' : [':w'        				  , 'write file'],
+      \ 'd' : [':BufferClose'       	  , 'close file'],
+      \ }
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ '>' : [':BufferMoveNext'        , 'move next'],
-      \ '<' : [':BufferMovePrevious'    , 'move prev'],
-      \ 'b' : [':BufferPick'            , 'pick buffer'],
-      \ 'd' : [':BufferClose'               , 'delete-buffer'],
-      \ 'n' : ['bnext'                  , 'next-buffer'],
-      \ 'p' : ['bprevious'              , 'previous-buffer'],
-      \ '?' : ['Buffers'                , 'fzf-buffer'],
+      \ 'j' : [':BufferMoveNext'        , 'move next'],
+      \ 'k' : [':BufferMovePrevious'    , 'move prev'],
+      \ 'b' : [':Telescope buffers'   	, 'fzf buffers'],
+      \ 'd' : [':BufferClose'			, 'delete buffer'],
+      \ 'l' : ['bnext'                  , 'next buffer'],
+      \ 'h' : ['bprevious'              , 'previous buffer'],
+      \ 'B' : [':buffers'                , 'buffers'],
       \ }
 
 " d is for debug
