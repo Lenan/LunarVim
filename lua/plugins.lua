@@ -74,6 +74,7 @@ return require("packer").startup(
 
         -- Color
         use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
+        use {"nekonako/xresources-nvim", opt = true}
 
         -- Icons
         use {"kyazdani42/nvim-web-devicons", opt = true}
@@ -105,5 +106,6 @@ return require("packer").startup(
         require_plugin("nvim-web-devicons")
         require_plugin("galaxyline.nvim")
         require_plugin("barbar.nvim")
+        require_plugin("xresources-nvim")
     end
 )

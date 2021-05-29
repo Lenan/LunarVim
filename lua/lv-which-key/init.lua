@@ -22,7 +22,7 @@ require("which-key").setup {
     window = {
         border = "single", -- none, single, double, shadow
         position = "bottom", -- bottom, top
-        margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
+        margin = {0, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
         padding = {2, 2, 2, 2} -- extra window padding [top, right, bottom, left]
     },
     layout = {
@@ -48,32 +48,48 @@ vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true}
 vim.g.mapleader = ' '
 
 -- no hl
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>zh', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
 -- explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>fb', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 -- telescope
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>ff', ':Telescope find_files<CR>', {noremap = true, silent = true})
 
 -- dashboard
-vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('n', '<Leader>ph', ':Dashboard<CR>', {noremap = true, silent = true})
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>,", ":CommentToggle<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<leader>,", ":CommentToggle<CR>", {noremap = true, silent = true})
 
 -- close buffer
-vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap("n", "<leader>bc", ":BufferClose<CR>", {noremap = true, silent = true})
 
 -- TODO create entire treesitter section
 
 local mappings = {
-    ["/"] = "Comment",
-    ["c"] = "Close Buffer",
-    ["e"] = "Explorer",
-    ["f"] = "Find File",
-    ["h"] = "No Highlight",
+    [","] = "Comment",
+    p = {
+        name ="+Dashboard",
+        h = {"<cmd>Dashboard<cr>", "Dashboard"},
+    },
+    b = {
+        name = "+Buffer",
+        d = {"<cmd>BufferClose<cr>", "Close Buffer"},
+        b = {"<cmd>Telescope buffers<cr>", "Browse Buffers"},
+    },
+    f = {
+        name = "+Files",
+        f = {"<cmd>Telescope find_files<cr>", "Find files"},
+        e = {"<cmd>NvimTreeToggle<cr>", "Explorer"},
+        s = {"<cmd>w<cr>","Save file"},
+    },
+    q = {
+        name = "+Quit",
+        q = {"<cmd>q<cr>", "Quit"},
+        d = {"<cmd>q!<cr>", "Force Quit"},
+    },
     d = {
         name = "+Debug",
         b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
@@ -115,7 +131,6 @@ local mappings = {
         s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {"<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols"}
     },
-
     s = {
         name = "+Search",
         b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
