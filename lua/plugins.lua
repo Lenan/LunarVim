@@ -22,9 +22,7 @@ local function require_plugin(plugin)
         end
     end
     --	print(ok, err, code)
-    if ok then
-        vim.cmd("packadd " .. plugin)
-    end
+    if ok then vim.cmd("packadd " .. plugin) end
     return ok, err, code
 end
 

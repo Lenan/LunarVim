@@ -48,6 +48,9 @@ require('lsp.efm-general-ls')
 -- require('lsp.tailwindcss-ls')
 -- require('lsp.ruby-ls')
 -- require('lsp.kotlin-ls')
+<<<<<<< HEAD
 -- require('lsp.vue-ls')
 -- require('lsp.angular-ls')
 
+=======
+>>>>>>> f6fce55b3a41a91a7ba5a0154dc2207f9654ce75

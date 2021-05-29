@@ -16,6 +16,7 @@
 -- '     `-...-\'    ███████  ██████  ██   ████ ██   ██ ██   ██   ████   ██ ██      ██ ',
 --
 -- }
+<<<<<<< HEAD
 
 vim.g.dashboard_custom_header = O.dashboard.custom_header
 
